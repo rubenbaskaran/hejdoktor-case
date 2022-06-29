@@ -14,6 +14,8 @@ function App() {
   const [listOfQuestions, setListOfQuestions] = React.useState(TestData);
   const [showResultScreen, setShowResultScreen] = React.useState(false);
   const [progressBarWidth, setProgressBarWidth] = React.useState("0%");
+  const [chosenAnswers, setChosenAnswers] = React.useState([]);
+  const [allAnswers, setAllAnswers] = React.useState([]);
 
   function ChangeQuestion(direction) {
     if (direction === "back") {
@@ -31,11 +33,13 @@ function App() {
       } else if (questionNumber === listOfQuestions.length - 1) {
         setShowResultScreen(() => true);
       }
+
+      setAllAnswers((oldArray) => [...oldArray, chosenAnswers]);
+      setChosenAnswers(() => []);
     }
   }
 
   React.useEffect(() => {
-    console.log("Question number: " + questionNumber);
     if (showResultScreen) {
       setProgressBarWidth("100%");
     } else {
@@ -44,6 +48,10 @@ function App() {
       );
     }
   }, [questionNumber, showResultScreen]);
+
+  React.useEffect(() => {
+    console.log(allAnswers);
+  }, [allAnswers]);
 
   return (
     <>
@@ -101,15 +109,17 @@ function App() {
                 alignItems: "center",
               }}
             >
-              <FontAwesomeIcon
-                icon={faCircleArrowLeft}
-                style={{
-                  height: "50px",
-                  width: "50px",
-                  cursor: "pointer",
-                }}
-                onClick={() => ChangeQuestion("back")}
-              />
+              {questionNumber !== 0 && (
+                <FontAwesomeIcon
+                  icon={faCircleArrowLeft}
+                  style={{
+                    height: "50px",
+                    width: "50px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => ChangeQuestion("back")}
+                />
+              )}
             </div>
             {!showResultScreen && (
               <QuestionComponent
@@ -162,6 +172,12 @@ function App() {
                   key={item.name}
                   name={item.name}
                   image={item.image}
+                  numberOfAllowedAnswers={
+                    listOfQuestions[questionNumber]["numberOfAllowedAnswers"]
+                  }
+                  chosenAnswers={chosenAnswers}
+                  setChosenAnswers={setChosenAnswers}
+                  question={listOfQuestions[questionNumber]["question"]}
                 />
               ))}
           </div>
@@ -185,7 +201,7 @@ function App() {
                 margin: "0px 10px 0px 10px",
                 justifyContent: "center",
                 alignItems: "center",
-                paddingLeft: "5px",
+                paddingLeft: "10px",
               }}
             >
               {progressBarWidth}

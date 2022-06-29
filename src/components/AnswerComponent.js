@@ -1,8 +1,11 @@
 import React from "react";
 
 function AnswerComponent(props) {
+  const [disableAnswer, setDisableAnswer] = React.useState(false);
+
   return (
     <div
+      disabled={disableAnswer}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -15,6 +18,22 @@ function AnswerComponent(props) {
         padding: "10px",
         backgroundColor: "white",
         boxShadow: "3px 3px #C1C1C1",
+        cursor: "pointer",
+      }}
+      onClick={() => {
+        if (
+          disableAnswer === false &&
+          props.chosenAnswers.length !== props.numberOfAllowedAnswers
+        ) {
+          props.setChosenAnswers((oldArray) => [
+            ...oldArray,
+            { question: props.question, answer: props.name },
+          ]);
+          setDisableAnswer(!disableAnswer);
+        } else if (disableAnswer === true) {
+          props.setChosenAnswers(props.name); // TODO: Remove from array
+          setDisableAnswer(!disableAnswer);
+        }
       }}
     >
       <div
@@ -31,6 +50,7 @@ function AnswerComponent(props) {
             height: "80%",
             width: "100%",
             objectFit: "contain",
+            opacity: disableAnswer === true ? 0.1 : 1,
           }}
           src={props.image}
         ></img>
