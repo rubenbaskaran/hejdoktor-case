@@ -31,7 +31,9 @@ function AnswerComponent(props) {
           ]);
           setDisableAnswer(!disableAnswer);
         } else if (disableAnswer === true) {
-          props.setChosenAnswers(props.name); // TODO: Remove from array
+          props.setChosenAnswers(
+            props.chosenAnswers.filter((item) => item.answer !== props.name)
+          );
           setDisableAnswer(!disableAnswer);
         }
       }}
