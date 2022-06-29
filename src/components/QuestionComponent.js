@@ -55,7 +55,10 @@ function QuestionComponent(props) {
         >
           {props.showFinalScreen
             ? "Thank you for participating!"
-            : props.question}
+            : props.question +
+              ` (${props.answersForSingleQuestion.length}/${
+                TestData[props.questionId]["numberOfRequiredAnswers"]
+              })`}
         </label>
         <div
           style={{
