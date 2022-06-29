@@ -1,13 +1,9 @@
 import React from "react";
 import QuestionComponent from "./components/QuestionComponent";
 import AnswerComponent from "./components/AnswerComponent";
+import ProgressBarComponent from "./components/ProgressBarComponent";
 import TestData from "./data/TestData.js";
 import hejdoktorLogo from "./assets/hejdoktor-logo.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleArrowLeft,
-  faCircleArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [questionId, setQuestionId] = React.useState(0);
@@ -18,6 +14,15 @@ function App() {
   const [answersForAllQuestions, setAnswersForAllQuestions] = React.useState(
     []
   );
+
+  React.useEffect(() => {
+    GetSavedAnswers();
+    UpdateProgressBar();
+  }, [questionId, showFinalScreen]);
+
+  React.useEffect(() => {
+    // console.log(allAnswers); // TODO: Show on result page
+  }, [answersForAllQuestions]);
 
   function ChangeQuestion(direction) {
     if (direction === "back") {
@@ -55,11 +60,6 @@ function App() {
     setAnswersForSingleQuestion([]);
   }
 
-  React.useEffect(() => {
-    GetSavedAnswers();
-    UpdateProgressBar();
-  }, [questionId, showFinalScreen]);
-
   function GetSavedAnswers() {
     if (
       answersForAllQuestions[questionId] !== undefined &&
@@ -76,10 +76,6 @@ function App() {
       setProgressBarWidth(() => (100 / TestData.length) * questionId + "%");
     }
   }
-
-  React.useEffect(() => {
-    // console.log(allAnswers);
-  }, [answersForAllQuestions]);
 
   return (
     <>
@@ -117,69 +113,14 @@ function App() {
             borderRadius: "25px",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              width: "100%",
-              height: "15%",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "20%",
-                height: "100%",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {questionId !== 0 && (
-                <FontAwesomeIcon
-                  icon={faCircleArrowLeft}
-                  style={{
-                    height: "50px",
-                    width: "50px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => ChangeQuestion("back")}
-                />
-              )}
-            </div>
-            {!showFinalScreen && (
-              <QuestionComponent question={TestData[questionId]["question"]} />
-            )}
-            {showFinalScreen && (
-              <QuestionComponent question="Thank you for participating!" />
-            )}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "20%",
-                height: "100%",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {!showFinalScreen &&
-                TestData[questionId]["numberOfRequiredAnswers"] ===
-                  answersForSingleQuestion.length && (
-                  <FontAwesomeIcon
-                    icon={faCircleArrowRight}
-                    style={{
-                      height: "50px",
-                      width: "50px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => ChangeQuestion("next")}
-                  />
-                )}
-            </div>
-          </div>
+          <QuestionComponent
+            question={TestData[questionId]["question"]}
+            questionId={questionId}
+            ChangeQuestion={ChangeQuestion}
+            showFinalScreen={showFinalScreen}
+            answersForSingleQuestion={answersForSingleQuestion}
+          />
+
           <div
             style={{
               display: "flex",
@@ -211,32 +152,8 @@ function App() {
                 />
               ))}
           </div>
-          <div
-            style={{
-              display: "flex",
-              width: "100%",
-              height: "10%",
-              alignItems: "center",
-              justifyContent: "flex-start",
-              fontWeight: "bold",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                width: progressBarWidth,
-                height: "50%",
-                backgroundColor:
-                  progressBarWidth === "0%" ? "white" : "lightblue",
-                margin: "0px 10px 0px 10px",
-                justifyContent: "center",
-                alignItems: "center",
-                paddingLeft: "10px",
-              }}
-            >
-              {progressBarWidth}
-            </div>
-          </div>
+
+          <ProgressBarComponent progressBarWidth={progressBarWidth} />
         </div>
       </div>
     </>
