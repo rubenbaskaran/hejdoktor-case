@@ -13,6 +13,8 @@ function AnswerComponent(props) {
         boxSizing: "border-box",
         borderRadius: "10px",
         padding: "10px",
+        backgroundColor: "white",
+        boxShadow: "3px 3px #C1C1C1",
       }}
     >
       <div
@@ -41,6 +43,7 @@ function AnswerComponent(props) {
             alignItems: "center",
             fontSize: "20px",
             fontWeight: "bold",
+            textAlign: "center",
           }}
         >
           {props.name}

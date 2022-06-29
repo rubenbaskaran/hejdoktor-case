@@ -30,6 +30,9 @@ function App() {
           justifyContent: "flex-end",
           alignItems: "flex-end",
           position: "absolute",
+          bottom: 0,
+          right: 0,
+          margin: 0,
         }}
         src={hejdoktorLogo}
       />
@@ -47,7 +50,7 @@ function App() {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "75%",
+            width: "80%",
             height: "90%",
             backgroundColor: "white",
             border: "5px solid black",
@@ -73,11 +76,13 @@ function App() {
               display: "flex",
               flexDirection: "row",
               width: "100%",
-              height: "70%",
+              height: "75%",
               justifyContent: "center",
               alignItems: "center",
               flexWrap: "wrap",
               overflow: "auto",
+              backgroundColor: "#F1F1F1",
+              padding: "20px 0px 20px 0px",
             }}
           >
             {listOfQuestions[questionNumber]["answers"].map((item) => (
@@ -93,7 +98,7 @@ function App() {
               display: "flex",
               flexDirection: "row",
               width: "100%",
-              height: "15%",
+              height: "10%",
             }}
           >
             <NavigationComponent ChangeQuestion={ChangeQuestion} />
