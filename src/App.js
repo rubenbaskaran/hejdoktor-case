@@ -1,3 +1,5 @@
+import QuestionComponent from "./components/QuestionComponent";
+
 function App() {
   return (
     <div
@@ -10,7 +12,7 @@ function App() {
         alignItems: "center",
       }}
     >
-      <label
+      <div
         style={{
           display: "flex",
           width: "50%",
@@ -20,8 +22,8 @@ function App() {
           alignItems: "center",
         }}
       >
-        Hello world
-      </label>
+        <QuestionComponent />
+      </div>
     </div>
   );
 }
