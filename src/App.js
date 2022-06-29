@@ -64,6 +64,7 @@ function App() {
             justifyContent: "center",
             alignItems: "center",
             flexWrap: "wrap",
+            overflow: "auto",
           }}
         >
           {listOfQuestions[questionNumber]["answers"].map((item) => (
