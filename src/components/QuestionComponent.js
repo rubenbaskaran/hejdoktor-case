@@ -1,4 +1,5 @@
 import React from "react";
+import AnswerComponent from "./AnswerComponent";
 
 function QuestionComponent(props) {
   const [input, setInput] = React.useState("");
@@ -28,22 +29,20 @@ function QuestionComponent(props) {
       <div
         style={{
           display: "flex",
+          flexDirection: "row",
           width: "100%",
           height: "34%",
           backgroundColor: "green",
           justifyContent: "center",
           alignItems: "center",
+          flexWrap: "wrap",
         }}
       >
-        <input
-          style={{
-            display: "flex",
-            width: "90%",
-            height: "70%",
-          }}
-          type="text"
-          onChange={(e) => setInput(e.target.value)}
-        />
+        <AnswerComponent />
+        <AnswerComponent />
+        <AnswerComponent />
+        <AnswerComponent />
+        <AnswerComponent />
       </div>
       <div
         style={{
