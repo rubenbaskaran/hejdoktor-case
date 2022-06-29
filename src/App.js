@@ -36,7 +36,7 @@ function App() {
           display: "flex",
           flexDirection: "column",
           width: "75%",
-          height: "75%",
+          height: "90%",
         }}
       >
         <div
@@ -45,7 +45,7 @@ function App() {
             flexDirection: "column",
             width: "100%",
             height: "20%",
-            backgroundColor: "grey",
+            backgroundColor: "white",
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -60,7 +60,7 @@ function App() {
             flexDirection: "row",
             width: "100%",
             height: "60%",
-            backgroundColor: "green",
+            backgroundColor: "white",
             justifyContent: "center",
             alignItems: "center",
             flexWrap: "wrap",
@@ -80,7 +80,7 @@ function App() {
             flexDirection: "row",
             width: "100%",
             height: "20%",
-            backgroundColor: "lightgreen",
+            backgroundColor: "white",
           }}
         >
           <NavigationComponent ChangeQuestion={ChangeQuestion} />

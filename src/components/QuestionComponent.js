@@ -8,12 +8,14 @@ function QuestionComponent(props) {
       <label
         style={{
           display: "flex",
-          width: "90%",
-          height: "90%",
-          backgroundColor: "purple",
+          width: "100%",
+          height: "100%",
+          backgroundColor: "white",
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
+          fontSize: "50px",
+          fontWeight: "bold",
         }}
       >
         {props.question}
