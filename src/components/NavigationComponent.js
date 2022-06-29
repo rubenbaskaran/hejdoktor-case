@@ -2,15 +2,7 @@ import React from "react";
 
 function AnswerComponent(props) {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        width: "100%",
-        height: "20%",
-        backgroundColor: "lightgreen",
-      }}
-    >
+    <>
       <div
         style={{
           display: "flex",
@@ -51,7 +43,7 @@ function AnswerComponent(props) {
           Next
         </button>
       </div>
-    </div>
+    </>
   );
 }
 

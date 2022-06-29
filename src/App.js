@@ -39,9 +39,21 @@ function App() {
           height: "75%",
         }}
       >
-        <QuestionComponent
-          question={listOfQuestions[questionNumber]["question"]}
-        />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            height: "20%",
+            backgroundColor: "grey",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <QuestionComponent
+            question={listOfQuestions[questionNumber]["question"]}
+          />
+        </div>
         <div
           style={{
             display: "flex",
@@ -55,10 +67,24 @@ function App() {
           }}
         >
           {listOfQuestions[questionNumber]["answers"].map((item) => (
-            <AnswerComponent key={item.name} name={item.name} />
+            <AnswerComponent
+              key={item.name}
+              name={item.name}
+              image={item.image}
+            />
           ))}
         </div>
-        <NavigationComponent ChangeQuestion={ChangeQuestion} />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            width: "100%",
+            height: "20%",
+            backgroundColor: "lightgreen",
+          }}
+        >
+          <NavigationComponent ChangeQuestion={ChangeQuestion} />
+        </div>
       </div>
     </div>
   );

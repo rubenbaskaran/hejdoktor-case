@@ -4,15 +4,7 @@ function QuestionComponent(props) {
   const [input, setInput] = React.useState("");
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        height: "20%",
-        backgroundColor: "grey",
-      }}
-    >
+    <>
       <label
         style={{
           display: "flex",
@@ -26,7 +18,7 @@ function QuestionComponent(props) {
       >
         {props.question}
       </label>
-    </div>
+    </>
   );
 }
 
