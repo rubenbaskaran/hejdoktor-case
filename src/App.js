@@ -12,18 +12,38 @@ import {
 function App() {
   const [questionNumber, setQuestionNumber] = React.useState(0);
   const [listOfQuestions, setListOfQuestions] = React.useState(TestData);
+  const [showResultScreen, setShowResultScreen] = React.useState(false);
+  const [progressBarWidth, setProgressBarWidth] = React.useState("0%");
 
   function ChangeQuestion(direction) {
     if (direction === "back") {
-      if (questionNumber !== 0) {
+      if (
+        questionNumber === listOfQuestions.length - 1 &&
+        showResultScreen === true
+      ) {
+        setShowResultScreen(() => false);
+      } else if (questionNumber !== 0) {
         setQuestionNumber(() => questionNumber - 1);
       }
     } else if (direction === "next") {
       if (questionNumber !== listOfQuestions.length - 1) {
         setQuestionNumber(() => questionNumber + 1);
+      } else if (questionNumber === listOfQuestions.length - 1) {
+        setShowResultScreen(() => true);
       }
     }
   }
+
+  React.useEffect(() => {
+    console.log("Question number: " + questionNumber);
+    if (showResultScreen) {
+      setProgressBarWidth("100%");
+    } else {
+      setProgressBarWidth(
+        () => (100 / listOfQuestions.length) * questionNumber + "%"
+      );
+    }
+  }, [questionNumber, showResultScreen]);
 
   return (
     <>
@@ -91,9 +111,14 @@ function App() {
                 onClick={() => ChangeQuestion("back")}
               />
             </div>
-            <QuestionComponent
-              question={listOfQuestions[questionNumber]["question"]}
-            />
+            {!showResultScreen && (
+              <QuestionComponent
+                question={listOfQuestions[questionNumber]["question"]}
+              />
+            )}
+            {showResultScreen && (
+              <QuestionComponent question="Thank you for participating!" />
+            )}
             <div
               style={{
                 display: "flex",
@@ -104,15 +129,17 @@ function App() {
                 alignItems: "center",
               }}
             >
-              <FontAwesomeIcon
-                icon={faCircleArrowRight}
-                style={{
-                  height: "50px",
-                  width: "50px",
-                  cursor: "pointer",
-                }}
-                onClick={() => ChangeQuestion("next")}
-              />
+              {!showResultScreen && (
+                <FontAwesomeIcon
+                  icon={faCircleArrowRight}
+                  style={{
+                    height: "50px",
+                    width: "50px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => ChangeQuestion("next")}
+                />
+              )}
             </div>
           </div>
           <div
@@ -129,21 +156,41 @@ function App() {
               padding: "20px 0px 20px 0px",
             }}
           >
-            {listOfQuestions[questionNumber]["answers"].map((item) => (
-              <AnswerComponent
-                key={item.name}
-                name={item.name}
-                image={item.image}
-              />
-            ))}
+            {!showResultScreen &&
+              listOfQuestions[questionNumber]["answers"].map((item) => (
+                <AnswerComponent
+                  key={item.name}
+                  name={item.name}
+                  image={item.image}
+                />
+              ))}
           </div>
           <div
             style={{
               display: "flex",
               width: "100%",
               height: "5%",
+              alignItems: "center",
+              justifyContent: "flex-start",
+              fontWeight: "bold",
             }}
-          ></div>
+          >
+            <div
+              style={{
+                display: "flex",
+                width: progressBarWidth,
+                height: "50%",
+                backgroundColor:
+                  progressBarWidth === "0%" ? "white" : "lightblue",
+                margin: "0px 10px 0px 10px",
+                justifyContent: "center",
+                alignItems: "center",
+                paddingLeft: "5px",
+              }}
+            >
+              {progressBarWidth}
+            </div>
+          </div>
         </div>
       </div>
     </>
