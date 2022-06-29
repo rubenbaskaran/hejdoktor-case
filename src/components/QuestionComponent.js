@@ -10,7 +10,6 @@ function QuestionComponent(props) {
           display: "flex",
           width: "100%",
           height: "100%",
-          backgroundColor: "white",
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",

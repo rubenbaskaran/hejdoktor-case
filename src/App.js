@@ -30,7 +30,6 @@ function App() {
           justifyContent: "flex-end",
           alignItems: "flex-end",
           position: "absolute",
-          margin: "5px",
         }}
         src={hejdoktorLogo}
       />
@@ -50,6 +49,9 @@ function App() {
             flexDirection: "column",
             width: "75%",
             height: "90%",
+            backgroundColor: "white",
+            border: "5px solid black",
+            borderRadius: "50px",
           }}
         >
           <div
@@ -57,8 +59,7 @@ function App() {
               display: "flex",
               flexDirection: "column",
               width: "100%",
-              height: "20%",
-              backgroundColor: "white",
+              height: "15%",
               justifyContent: "center",
               alignItems: "center",
             }}
@@ -72,8 +73,7 @@ function App() {
               display: "flex",
               flexDirection: "row",
               width: "100%",
-              height: "60%",
-              backgroundColor: "white",
+              height: "70%",
               justifyContent: "center",
               alignItems: "center",
               flexWrap: "wrap",
@@ -93,8 +93,7 @@ function App() {
               display: "flex",
               flexDirection: "row",
               width: "100%",
-              height: "20%",
-              backgroundColor: "white",
+              height: "15%",
             }}
           >
             <NavigationComponent ChangeQuestion={ChangeQuestion} />
