@@ -77,6 +77,30 @@ function App() {
     }
   }
 
+  function ShowResultsOnFinalScreen() {
+    console.log(answersForAllQuestions);
+    let output = [];
+
+    answersForAllQuestions.forEach((element) => {
+      element.forEach((childElement) => {
+        output.push(
+          <div
+            style={{ fontSize: "20px", fontWeight: "bold", marginTop: "20px" }}
+          >
+            {childElement["question"]}
+          </div>
+        );
+        output.push(
+          <div style={{ fontSize: "20px" }}>
+            {"- " + childElement["answer"]}
+          </div>
+        );
+      });
+    });
+
+    return <div>{output}</div>;
+  }
+
   return (
     <>
       <img
@@ -151,6 +175,21 @@ function App() {
                   questionNumber={questionId}
                 />
               ))}
+            {showFinalScreen && (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start",
+                  alignItems: "center",
+                  height: "100%",
+                  width: "100%",
+                }}
+              >
+                <label style={{ fontSize: "40px" }}>Overview of answers</label>
+                {ShowResultsOnFinalScreen()}
+              </div>
+            )}
           </div>
 
           <ProgressBarComponent progressBarWidth={progressBarWidth} />
