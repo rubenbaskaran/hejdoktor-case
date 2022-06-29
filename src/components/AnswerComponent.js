@@ -36,16 +36,19 @@ function AnswerComponent(props) {
       onClick={() => {
         if (
           disableAnswer === false &&
-          props.chosenAnswers.length !== props.numberOfRequiredAnswers
+          props.answersForSingleQuestion.length !==
+            props.numberOfRequiredAnswers
         ) {
-          props.setChosenAnswers((oldArray) => [
+          props.setAnswersForSingleQuestion((oldArray) => [
             ...oldArray,
             { question: props.question, answer: props.name },
           ]);
           setDisableAnswer(!disableAnswer);
         } else if (disableAnswer === true) {
-          props.setChosenAnswers(
-            props.chosenAnswers.filter((item) => item.answer !== props.name)
+          props.setAnswersForSingleQuestion(
+            props.answersForSingleQuestion.filter(
+              (item) => item.answer !== props.name
+            )
           );
           setDisableAnswer(!disableAnswer);
         }

@@ -27,19 +27,7 @@ function App() {
         setQuestionId(() => questionId - 1);
       }
     } else if (direction === "next") {
-      if (
-        answersForAllQuestions[questionId] === undefined ||
-        answersForAllQuestions[questionId].length === 0
-      ) {
-        setAnswersForAllQuestions((oldArray) => [
-          ...oldArray,
-          answersForSingleQuestion,
-        ]);
-      } else {
-        const _allAnswers = [...answersForAllQuestions];
-        _allAnswers[questionId] = answersForSingleQuestion;
-        setAnswersForAllQuestions(_allAnswers);
-      }
+      SaveOrUpdateAnswers();
 
       if (questionId !== TestData.length - 1) {
         setQuestionId(() => questionId + 1);
@@ -49,15 +37,45 @@ function App() {
     }
   }
 
-  React.useEffect(() => {
-    setAnswersForSingleQuestion(() => []);
+  function SaveOrUpdateAnswers() {
+    if (
+      answersForAllQuestions[questionId] === undefined ||
+      answersForAllQuestions[questionId].length === 0
+    ) {
+      setAnswersForAllQuestions((oldArray) => [
+        ...oldArray,
+        answersForSingleQuestion,
+      ]);
+    } else {
+      const _allAnswers = [...answersForAllQuestions];
+      _allAnswers[questionId] = answersForSingleQuestion;
+      setAnswersForAllQuestions(() => _allAnswers);
+    }
 
+    setAnswersForSingleQuestion([]);
+  }
+
+  React.useEffect(() => {
+    GetSavedAnswers();
+    UpdateProgressBar();
+  }, [questionId, showFinalScreen]);
+
+  function GetSavedAnswers() {
+    if (
+      answersForAllQuestions[questionId] !== undefined &&
+      answersForAllQuestions[questionId].length !== 0
+    ) {
+      setAnswersForSingleQuestion(() => answersForAllQuestions[questionId]);
+    }
+  }
+
+  function UpdateProgressBar() {
     if (showFinalScreen) {
       setProgressBarWidth("100%");
     } else {
       setProgressBarWidth(() => (100 / TestData.length) * questionId + "%");
     }
-  }, [questionId, showFinalScreen]);
+  }
 
   React.useEffect(() => {
     // console.log(allAnswers);
@@ -167,7 +185,7 @@ function App() {
               display: "flex",
               flexDirection: "row",
               width: "100%",
-              height: "90%",
+              height: "85%",
               justifyContent: "center",
               alignItems: "center",
               flexWrap: "wrap",
@@ -185,8 +203,8 @@ function App() {
                   numberOfRequiredAnswers={
                     TestData[questionId]["numberOfRequiredAnswers"]
                   }
-                  chosenAnswers={answersForSingleQuestion}
-                  setChosenAnswers={setAnswersForSingleQuestion}
+                  answersForSingleQuestion={answersForSingleQuestion}
+                  setAnswersForSingleQuestion={setAnswersForSingleQuestion}
                   question={TestData[questionId]["question"]}
                   allAnswers={answersForAllQuestions}
                   questionNumber={questionId}
@@ -197,7 +215,7 @@ function App() {
             style={{
               display: "flex",
               width: "100%",
-              height: "5%",
+              height: "10%",
               alignItems: "center",
               justifyContent: "flex-start",
               fontWeight: "bold",
