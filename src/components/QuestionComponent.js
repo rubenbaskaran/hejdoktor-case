@@ -1,5 +1,4 @@
 import React from "react";
-import AnswerComponent from "./AnswerComponent";
 
 function QuestionComponent(props) {
   const [input, setInput] = React.useState("");
@@ -10,41 +9,23 @@ function QuestionComponent(props) {
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        height: "80%",
+        height: "20%",
         backgroundColor: "grey",
       }}
     >
       <label
         style={{
           display: "flex",
-          width: "100%",
-          height: "33%",
-          backgroundColor: "yellow",
+          width: "90%",
+          height: "90%",
+          backgroundColor: "purple",
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
         }}
       >
-        {props.question} + " " + {props.numberOfAllowedAnswers}
+        {props.question}
       </label>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          height: "34%",
-          backgroundColor: "green",
-          justifyContent: "center",
-          alignItems: "center",
-          flexWrap: "wrap",
-        }}
-      >
-        <AnswerComponent />
-        <AnswerComponent />
-        <AnswerComponent />
-        <AnswerComponent />
-        <AnswerComponent />
-      </div>
     </div>
   );
 }

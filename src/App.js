@@ -1,5 +1,6 @@
 import React from "react";
 import QuestionComponent from "./components/QuestionComponent";
+import AnswerComponent from "./components/AnswerComponent";
 import NavigationComponent from "./components/NavigationComponent";
 import TestData from "./data/TestData.js";
 
@@ -40,10 +41,23 @@ function App() {
       >
         <QuestionComponent
           question={listOfQuestions[questionNumber]["question"]}
-          numberOfAllowedAnswers={
-            listOfQuestions[questionNumber]["numberOfAllowedAnswers"]
-          }
         />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            width: "100%",
+            height: "60%",
+            backgroundColor: "green",
+            justifyContent: "center",
+            alignItems: "center",
+            flexWrap: "wrap",
+          }}
+        >
+          {listOfQuestions[questionNumber]["answers"].map((item) => (
+            <AnswerComponent key={item.name} name={item.name} />
+          ))}
+        </div>
         <NavigationComponent ChangeQuestion={ChangeQuestion} />
       </div>
     </div>

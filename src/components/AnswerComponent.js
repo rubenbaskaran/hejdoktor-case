@@ -1,18 +1,20 @@
 import React from "react";
 
-function AnswerComponent() {
+function AnswerComponent(props) {
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
         width: "20%",
-        height: "100%",
+        height: "20%",
         backgroundColor: "pink",
         border: "1px solid black",
         boxSizing: "border-box",
       }}
-    ></div>
+    >
+      {props.name}
+    </div>
   );
 }
 
