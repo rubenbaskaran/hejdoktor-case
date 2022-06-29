@@ -3,6 +3,7 @@ import QuestionComponent from "./components/QuestionComponent";
 import AnswerComponent from "./components/AnswerComponent";
 import NavigationComponent from "./components/NavigationComponent";
 import TestData from "./data/TestData.js";
+import hejdoktorLogo from "./assets/hejdoktor-logo.png";
 
 function App() {
   const [questionNumber, setQuestionNumber] = React.useState(0);
@@ -21,73 +22,86 @@ function App() {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        width: "100%",
-        height: "100%",
-        backgroundColor: "teal",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <>
+      <img
+        alt="hejdoktor logo"
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "flex-end",
+          position: "absolute",
+          margin: "5px",
+        }}
+        src={hejdoktorLogo}
+      />
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
-          width: "75%",
-          height: "90%",
+          width: "100%",
+          height: "100%",
+          backgroundColor: "#EB533F",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "100%",
-            height: "20%",
-            backgroundColor: "white",
-            justifyContent: "center",
-            alignItems: "center",
+            width: "75%",
+            height: "90%",
           }}
         >
-          <QuestionComponent
-            question={listOfQuestions[questionNumber]["question"]}
-          />
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            width: "100%",
-            height: "60%",
-            backgroundColor: "white",
-            justifyContent: "center",
-            alignItems: "center",
-            flexWrap: "wrap",
-            overflow: "auto",
-          }}
-        >
-          {listOfQuestions[questionNumber]["answers"].map((item) => (
-            <AnswerComponent
-              key={item.name}
-              name={item.name}
-              image={item.image}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              width: "100%",
+              height: "20%",
+              backgroundColor: "white",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <QuestionComponent
+              question={listOfQuestions[questionNumber]["question"]}
             />
-          ))}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            width: "100%",
-            height: "20%",
-            backgroundColor: "white",
-          }}
-        >
-          <NavigationComponent ChangeQuestion={ChangeQuestion} />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              width: "100%",
+              height: "60%",
+              backgroundColor: "white",
+              justifyContent: "center",
+              alignItems: "center",
+              flexWrap: "wrap",
+              overflow: "auto",
+            }}
+          >
+            {listOfQuestions[questionNumber]["answers"].map((item) => (
+              <AnswerComponent
+                key={item.name}
+                name={item.name}
+                image={item.image}
+              />
+            ))}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              width: "100%",
+              height: "20%",
+              backgroundColor: "white",
+            }}
+          >
+            <NavigationComponent ChangeQuestion={ChangeQuestion} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
