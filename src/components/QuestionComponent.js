@@ -13,7 +13,7 @@ function QuestionComponent(props) {
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
-          fontSize: "50px",
+          fontSize: "40px",
           fontWeight: "bold",
         }}
       >

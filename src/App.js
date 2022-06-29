@@ -1,9 +1,13 @@
 import React from "react";
 import QuestionComponent from "./components/QuestionComponent";
 import AnswerComponent from "./components/AnswerComponent";
-import NavigationComponent from "./components/NavigationComponent";
 import TestData from "./data/TestData.js";
 import hejdoktorLogo from "./assets/hejdoktor-logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCircleArrowLeft,
+  faCircleArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [questionNumber, setQuestionNumber] = React.useState(0);
@@ -54,29 +58,69 @@ function App() {
             height: "90%",
             backgroundColor: "white",
             border: "5px solid black",
-            borderRadius: "50px",
+            borderRadius: "25px",
           }}
         >
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
+              flexDirection: "row",
               width: "100%",
               height: "15%",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "20%",
+                height: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faCircleArrowLeft}
+                style={{
+                  height: "50px",
+                  width: "50px",
+                  cursor: "pointer",
+                }}
+                onClick={() => ChangeQuestion("back")}
+              />
+            </div>
             <QuestionComponent
               question={listOfQuestions[questionNumber]["question"]}
             />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "20%",
+                height: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faCircleArrowRight}
+                style={{
+                  height: "50px",
+                  width: "50px",
+                  cursor: "pointer",
+                }}
+                onClick={() => ChangeQuestion("next")}
+              />
+            </div>
           </div>
           <div
             style={{
               display: "flex",
               flexDirection: "row",
               width: "100%",
-              height: "75%",
+              height: "90%",
               justifyContent: "center",
               alignItems: "center",
               flexWrap: "wrap",
@@ -96,13 +140,10 @@ function App() {
           <div
             style={{
               display: "flex",
-              flexDirection: "row",
               width: "100%",
-              height: "10%",
+              height: "5%",
             }}
-          >
-            <NavigationComponent ChangeQuestion={ChangeQuestion} />
-          </div>
+          ></div>
         </div>
       </div>
     </>
