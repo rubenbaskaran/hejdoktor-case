@@ -1,7 +1,7 @@
 const TestData = [
   {
     question: "Who is your favorite MCU superhero?",
-    numberOfAllowedAnswers: 1,
+    numberOfRequiredAnswers: 1,
     answers: [
       {
         name: "Iron Man",
@@ -57,7 +57,7 @@ const TestData = [
   },
   {
     question: "What are your three favorite Martin Scorsese movies?",
-    numberOfAllowedAnswers: 3,
+    numberOfRequiredAnswers: 3,
     answers: [
       {
         name: "The Wolf of Wall Street",
@@ -113,7 +113,7 @@ const TestData = [
   },
   {
     question: "What are your three favorite countries?",
-    numberOfAllowedAnswers: 3,
+    numberOfRequiredAnswers: 3,
     answers: [
       {
         name: "Denmark",
@@ -169,7 +169,7 @@ const TestData = [
   },
   {
     question: "Who is your favorite politician?",
-    numberOfAllowedAnswers: 1,
+    numberOfRequiredAnswers: 1,
     answers: [
       {
         name: "Abraham Lincoln",

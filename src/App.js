@@ -10,58 +10,58 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
-  const [questionNumber, setQuestionNumber] = React.useState(0);
-  const [listOfQuestions, setListOfQuestions] = React.useState(TestData);
-  const [showResultScreen, setShowResultScreen] = React.useState(false);
+  const [questionId, setQuestionId] = React.useState(0);
+  const [showFinalScreen, setShowFinalScreen] = React.useState(false);
   const [progressBarWidth, setProgressBarWidth] = React.useState("0%");
-  const [chosenAnswers, setChosenAnswers] = React.useState([]);
-  const [allAnswers, setAllAnswers] = React.useState([]);
+  const [answersForSingleQuestion, setAnswersForSingleQuestion] =
+    React.useState([]);
+  const [answersForAllQuestions, setAnswersForAllQuestions] = React.useState(
+    []
+  );
 
   function ChangeQuestion(direction) {
     if (direction === "back") {
-      if (
-        questionNumber === listOfQuestions.length - 1 &&
-        showResultScreen === true
-      ) {
-        setShowResultScreen(() => false);
-      } else if (questionNumber !== 0) {
-        setQuestionNumber(() => questionNumber - 1);
+      if (showFinalScreen === true) {
+        setShowFinalScreen(() => false);
+      } else {
+        setQuestionId(() => questionId - 1);
       }
     } else if (direction === "next") {
       if (
-        allAnswers[questionNumber] === undefined ||
-        allAnswers[questionNumber].length === 0
+        answersForAllQuestions[questionId] === undefined ||
+        answersForAllQuestions[questionId].length === 0
       ) {
-        setAllAnswers((oldArray) => [...oldArray, chosenAnswers]);
+        setAnswersForAllQuestions((oldArray) => [
+          ...oldArray,
+          answersForSingleQuestion,
+        ]);
       } else {
-        const _allAnswers = [...allAnswers];
-        _allAnswers[questionNumber] = chosenAnswers;
-        setAllAnswers(_allAnswers);
+        const _allAnswers = [...answersForAllQuestions];
+        _allAnswers[questionId] = answersForSingleQuestion;
+        setAnswersForAllQuestions(_allAnswers);
       }
 
-      if (questionNumber !== listOfQuestions.length - 1) {
-        setQuestionNumber(() => questionNumber + 1);
-      } else if (questionNumber === listOfQuestions.length - 1) {
-        setShowResultScreen(() => true);
+      if (questionId !== TestData.length - 1) {
+        setQuestionId(() => questionId + 1);
+      } else if (questionId === TestData.length - 1) {
+        setShowFinalScreen(() => true);
       }
     }
   }
 
   React.useEffect(() => {
-    setChosenAnswers(() => []);
+    setAnswersForSingleQuestion(() => []);
 
-    if (showResultScreen) {
+    if (showFinalScreen) {
       setProgressBarWidth("100%");
     } else {
-      setProgressBarWidth(
-        () => (100 / listOfQuestions.length) * questionNumber + "%"
-      );
+      setProgressBarWidth(() => (100 / TestData.length) * questionId + "%");
     }
-  }, [questionNumber, showResultScreen]);
+  }, [questionId, showFinalScreen]);
 
   React.useEffect(() => {
-    console.log(allAnswers);
-  }, [allAnswers]);
+    // console.log(allAnswers);
+  }, [answersForAllQuestions]);
 
   return (
     <>
@@ -119,7 +119,7 @@ function App() {
                 alignItems: "center",
               }}
             >
-              {questionNumber !== 0 && (
+              {questionId !== 0 && (
                 <FontAwesomeIcon
                   icon={faCircleArrowLeft}
                   style={{
@@ -131,12 +131,10 @@ function App() {
                 />
               )}
             </div>
-            {!showResultScreen && (
-              <QuestionComponent
-                question={listOfQuestions[questionNumber]["question"]}
-              />
+            {!showFinalScreen && (
+              <QuestionComponent question={TestData[questionId]["question"]} />
             )}
-            {showResultScreen && (
+            {showFinalScreen && (
               <QuestionComponent question="Thank you for participating!" />
             )}
             <div
@@ -149,17 +147,19 @@ function App() {
                 alignItems: "center",
               }}
             >
-              {!showResultScreen && (
-                <FontAwesomeIcon
-                  icon={faCircleArrowRight}
-                  style={{
-                    height: "50px",
-                    width: "50px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => ChangeQuestion("next")}
-                />
-              )}
+              {!showFinalScreen &&
+                TestData[questionId]["numberOfRequiredAnswers"] ===
+                  answersForSingleQuestion.length && (
+                  <FontAwesomeIcon
+                    icon={faCircleArrowRight}
+                    style={{
+                      height: "50px",
+                      width: "50px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => ChangeQuestion("next")}
+                  />
+                )}
             </div>
           </div>
           <div
@@ -176,18 +176,20 @@ function App() {
               padding: "20px 0px 20px 0px",
             }}
           >
-            {!showResultScreen &&
-              listOfQuestions[questionNumber]["answers"].map((item) => (
+            {!showFinalScreen &&
+              TestData[questionId]["answers"].map((item) => (
                 <AnswerComponent
                   key={item.name}
                   name={item.name}
                   image={item.image}
-                  numberOfAllowedAnswers={
-                    listOfQuestions[questionNumber]["numberOfAllowedAnswers"]
+                  numberOfRequiredAnswers={
+                    TestData[questionId]["numberOfRequiredAnswers"]
                   }
-                  chosenAnswers={chosenAnswers}
-                  setChosenAnswers={setChosenAnswers}
-                  question={listOfQuestions[questionNumber]["question"]}
+                  chosenAnswers={answersForSingleQuestion}
+                  setChosenAnswers={setAnswersForSingleQuestion}
+                  question={TestData[questionId]["question"]}
+                  allAnswers={answersForAllQuestions}
+                  questionNumber={questionId}
                 />
               ))}
           </div>

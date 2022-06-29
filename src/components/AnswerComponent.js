@@ -3,6 +3,19 @@ import React from "react";
 function AnswerComponent(props) {
   const [disableAnswer, setDisableAnswer] = React.useState(false);
 
+  React.useEffect(() => {
+    if (
+      props.allAnswers[props.questionNumber] !== undefined &&
+      props.allAnswers[props.questionNumber].length !== 0
+    ) {
+      props.allAnswers[props.questionNumber].map((item) => {
+        if (item.answer === props.name) {
+          setDisableAnswer(true);
+        }
+      });
+    }
+  }, []);
+
   return (
     <div
       disabled={disableAnswer}
@@ -23,7 +36,7 @@ function AnswerComponent(props) {
       onClick={() => {
         if (
           disableAnswer === false &&
-          props.chosenAnswers.length !== props.numberOfAllowedAnswers
+          props.chosenAnswers.length !== props.numberOfRequiredAnswers
         ) {
           props.setChosenAnswers((oldArray) => [
             ...oldArray,
