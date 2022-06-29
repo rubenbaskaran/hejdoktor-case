@@ -1,5 +1,6 @@
 import React from "react";
 import QuestionComponent from "./components/QuestionComponent";
+import NavigationComponent from "./components/NavigationComponent";
 import TestData from "./data/TestData.js";
 
 function App() {
@@ -32,18 +33,18 @@ function App() {
       <div
         style={{
           display: "flex",
-          width: "50%",
-          height: "50%",
-          backgroundColor: "lightblue",
-          justifyContent: "center",
-          alignItems: "center",
+          flexDirection: "column",
+          width: "75%",
+          height: "75%",
         }}
       >
         <QuestionComponent
           question={listOfQuestions[questionNumber]["question"]}
-          type={listOfQuestions[questionNumber]["numberOfAllowedAnswers"]}
-          ChangeQuestion={ChangeQuestion}
+          numberOfAllowedAnswers={
+            listOfQuestions[questionNumber]["numberOfAllowedAnswers"]
+          }
         />
+        <NavigationComponent ChangeQuestion={ChangeQuestion} />
       </div>
     </div>
   );

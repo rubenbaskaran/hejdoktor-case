@@ -9,8 +9,9 @@ function QuestionComponent(props) {
       style={{
         display: "flex",
         flexDirection: "column",
-        width: "50%",
-        height: "50%",
+        width: "100%",
+        height: "80%",
+        backgroundColor: "grey",
       }}
     >
       <label
@@ -43,56 +44,6 @@ function QuestionComponent(props) {
         <AnswerComponent />
         <AnswerComponent />
         <AnswerComponent />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          height: "33%",
-          backgroundColor: "lightgreen",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignSelf: "center",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "50%",
-            height: "100%",
-          }}
-        >
-          <button
-            style={{
-              width: "80%",
-              height: "80%",
-            }}
-            onClick={() => props.ChangeQuestion("back")}
-          >
-            Back
-          </button>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignSelf: "center",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "50%",
-            height: "100%",
-          }}
-        >
-          <button
-            style={{
-              width: "80%",
-              height: "80%",
-            }}
-            onClick={() => props.ChangeQuestion("next")}
-          >
-            Next
-          </button>
-        </div>
       </div>
     </div>
   );
