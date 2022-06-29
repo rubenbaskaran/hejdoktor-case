@@ -28,18 +28,28 @@ function App() {
         setQuestionNumber(() => questionNumber - 1);
       }
     } else if (direction === "next") {
+      if (
+        allAnswers[questionNumber] === undefined ||
+        allAnswers[questionNumber].length === 0
+      ) {
+        setAllAnswers((oldArray) => [...oldArray, chosenAnswers]);
+      } else {
+        const _allAnswers = [...allAnswers];
+        _allAnswers[questionNumber] = chosenAnswers;
+        setAllAnswers(_allAnswers);
+      }
+
       if (questionNumber !== listOfQuestions.length - 1) {
         setQuestionNumber(() => questionNumber + 1);
       } else if (questionNumber === listOfQuestions.length - 1) {
         setShowResultScreen(() => true);
       }
-
-      setAllAnswers((oldArray) => [...oldArray, chosenAnswers]);
-      setChosenAnswers(() => []);
     }
   }
 
   React.useEffect(() => {
+    setChosenAnswers(() => []);
+
     if (showResultScreen) {
       setProgressBarWidth("100%");
     } else {
