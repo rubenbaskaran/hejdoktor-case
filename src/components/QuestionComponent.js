@@ -23,7 +23,7 @@ function QuestionComponent(props) {
           textAlign: "center",
         }}
       >
-        What is your name?
+        {props.question} + " " + {props.numberOfAllowedAnswers}
       </label>
       <div
         style={{

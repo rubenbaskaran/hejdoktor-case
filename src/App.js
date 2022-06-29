@@ -1,29 +1,22 @@
 import React from "react";
 import QuestionComponent from "./components/QuestionComponent";
+import TestData from "./data/TestData.js";
 
 function App() {
   const [questionNumber, setQuestionNumber] = React.useState(0);
-  const [listOfQuestions, setListOfQuestions] = React.useState([
-    { question: "What is your firstname?", type: "text" },
-    { question: "What is your lastname?", type: "text" },
-  ]);
+  const [listOfQuestions, setListOfQuestions] = React.useState(TestData);
 
   function ChangeQuestion(direction) {
     if (direction === "back") {
       if (questionNumber !== 0) {
-        setQuestionNumber(questionNumber - 1);
+        setQuestionNumber(() => questionNumber - 1);
       }
     } else if (direction === "next") {
-      if (questionNumber !== listOfQuestions.length) {
-        setQuestionNumber(questionNumber + 1);
+      if (questionNumber !== listOfQuestions.length - 1) {
+        setQuestionNumber(() => questionNumber + 1);
       }
     }
   }
-
-  React.useEffect(() => {
-    console.log("Length: " + listOfQuestions.length);
-    console.log(questionNumber);
-  }, [questionNumber]);
 
   return (
     <div
@@ -46,7 +39,11 @@ function App() {
           alignItems: "center",
         }}
       >
-        <QuestionComponent ChangeQuestion={ChangeQuestion} />
+        <QuestionComponent
+          question={listOfQuestions[questionNumber]["question"]}
+          type={listOfQuestions[questionNumber]["numberOfAllowedAnswers"]}
+          ChangeQuestion={ChangeQuestion}
+        />
       </div>
     </div>
   );
