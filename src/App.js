@@ -1,9 +1,9 @@
 import React from "react";
+import TestData from "./data/TestData.js";
 import QuestionComponent from "./components/QuestionComponent";
 import AnswerComponent from "./components/AnswerComponent";
 import ProgressBarComponent from "./components/ProgressBarComponent";
 import FinalScreenComponent from "./components/FinalScreenComponent";
-import TestData from "./data/TestData.js";
 import hejdoktorLogo from "./assets/hejdoktor-logo.png";
 
 function App() {
@@ -21,9 +21,22 @@ function App() {
     UpdateProgressBar();
   }, [questionId, showFinalScreen]);
 
-  React.useEffect(() => {
-    // console.log(allAnswers); // TODO: Show on result page
-  }, [answersForAllQuestions]);
+  function GetSavedAnswers() {
+    if (
+      answersForAllQuestions[questionId] !== undefined &&
+      answersForAllQuestions[questionId].length !== 0
+    ) {
+      setAnswersForSingleQuestion(() => answersForAllQuestions[questionId]);
+    }
+  }
+
+  function UpdateProgressBar() {
+    if (showFinalScreen) {
+      setProgressBarWidth("100%");
+    } else {
+      setProgressBarWidth(() => (100 / TestData.length) * questionId + "%");
+    }
+  }
 
   function ChangeQuestion(direction) {
     if (direction === "back") {
@@ -53,29 +66,12 @@ function App() {
         answersForSingleQuestion,
       ]);
     } else {
-      const _allAnswers = [...answersForAllQuestions];
-      _allAnswers[questionId] = answersForSingleQuestion;
-      setAnswersForAllQuestions(() => _allAnswers);
+      const copyOfAllAnswers = [...answersForAllQuestions];
+      copyOfAllAnswers[questionId] = answersForSingleQuestion;
+      setAnswersForAllQuestions(() => copyOfAllAnswers);
     }
 
     setAnswersForSingleQuestion([]);
-  }
-
-  function GetSavedAnswers() {
-    if (
-      answersForAllQuestions[questionId] !== undefined &&
-      answersForAllQuestions[questionId].length !== 0
-    ) {
-      setAnswersForSingleQuestion(() => answersForAllQuestions[questionId]);
-    }
-  }
-
-  function UpdateProgressBar() {
-    if (showFinalScreen) {
-      setProgressBarWidth("100%");
-    } else {
-      setProgressBarWidth(() => (100 / TestData.length) * questionId + "%");
-    }
   }
 
   return (
@@ -116,7 +112,6 @@ function App() {
             showFinalScreen={showFinalScreen}
             answersForSingleQuestion={answersForSingleQuestion}
           />
-
           <div
             style={{
               display: "flex",
@@ -153,7 +148,6 @@ function App() {
               />
             )}
           </div>
-
           <ProgressBarComponent progressBarWidth={progressBarWidth} />
         </div>
       </div>
