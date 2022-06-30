@@ -169,54 +169,55 @@ const TestData = [
     numberOfRequiredAnswers: 1,
     answers: [
       {
-        name: "Abraham Lincoln",
+        name: "Justin Trudeau",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/d/da/Jeremy_Renner_as_Hawkeye.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/b/b6/Trudeau_visit_White_House_for_USMCA_%28cropped%29.jpg",
       },
+
       {
         name: "Barack Obama",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/d/da/Jeremy_Renner_as_Hawkeye.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/800px-President_Barack_Obama.jpg",
       },
       {
-        name: "Arnold Schwarzenegger",
+        name: "Jacinda Ardern",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/d/da/Jeremy_Renner_as_Hawkeye.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/New_Zealand_Prime_Minister_Jacinda_Ardern_in_2018.jpg/800px-New_Zealand_Prime_Minister_Jacinda_Ardern_in_2018.jpg",
       },
       {
         name: "Donald Trump",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/d/da/Jeremy_Renner_as_Hawkeye.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/800px-Donald_Trump_official_portrait.jpg",
       },
       {
-        name: "Bernie Sanders",
+        name: "Mette Frederiksen",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/d/da/Jeremy_Renner_as_Hawkeye.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/P%C3%A4%C3%A4ministeri_Marin_K%C3%B6%C3%B6penhaminassa_4.5.2022_%2852049397038%29_%28cropped%29.jpg/800px-P%C3%A4%C3%A4ministeri_Marin_K%C3%B6%C3%B6penhaminassa_4.5.2022_%2852049397038%29_%28cropped%29.jpg",
       },
       {
-        name: "Emmanuel Macron",
+        name: "Jakob Ellemann-Jensen",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/d/da/Jeremy_Renner_as_Hawkeye.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/20200612_Altinget_Jakob_Elleman_Jensen_750A4304-2_%28cropped%29.jpg/800px-20200612_Altinget_Jakob_Elleman_Jensen_750A4304-2_%28cropped%29.jpg",
       },
       {
-        name: "Justin Trudeau",
+        name: "Abraham Lincoln",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/d/da/Jeremy_Renner_as_Hawkeye.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Abraham_Lincoln_O-77_matte_collodion_print.jpg/800px-Abraham_Lincoln_O-77_matte_collodion_print.jpg",
       },
       {
         name: "Nelson Mandela",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/d/da/Jeremy_Renner_as_Hawkeye.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Nelson_Mandela_1994.jpg/800px-Nelson_Mandela_1994.jpg",
       },
       {
         name: "Kim Jong-un",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/d/da/Jeremy_Renner_as_Hawkeye.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Kim_Jong-un_April_2019_%28cropped%29.jpg/800px-Kim_Jong-un_April_2019_%28cropped%29.jpg",
       },
       {
-        name: "Vladimir Putin",
+        name: "Arnold Schwarzenegger",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/d/da/Jeremy_Renner_as_Hawkeye.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Arnold_Schwarzenegger_by_Gage_Skidmore_4.jpg/800px-Arnold_Schwarzenegger_by_Gage_Skidmore_4.jpg",
       },
     ],
   },
