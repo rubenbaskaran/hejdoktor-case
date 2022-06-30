@@ -4,11 +4,13 @@ function FinalScreenComponent(props) {
   function ShowResultsOnFinalScreen() {
     let nestedAnswersArray = [];
 
+    // For getting each unique question
     props.answersForAllQuestions.forEach((multipleAnswerItem, index) => {
       const question = multipleAnswerItem[0]["question"];
       nestedAnswersArray.push({ key: index, question: question, answers: [] });
     });
 
+    // For nesting the multiple answers for a question in a single array
     props.answersForAllQuestions.forEach((multipleAnswerItem) => {
       multipleAnswerItem.forEach((singleAnswerItem) => {
         nestedAnswersArray.forEach((item) => {
@@ -22,7 +24,7 @@ function FinalScreenComponent(props) {
     });
 
     let output = [];
-    nestedAnswersArray.forEach((element, index) => {
+    nestedAnswersArray.forEach((element) => {
       output.push(
         <div key={element["key"]}>
           <div
