@@ -129,7 +129,7 @@ function App() {
             {!showFinalScreen &&
               TestData[questionId]["answers"].map((item) => (
                 <AnswerComponent
-                  key={item.name}
+                  key={TestData[questionId]["question"] + item.name}
                   name={item.name}
                   image={item.image}
                   numberOfRequiredAnswers={
