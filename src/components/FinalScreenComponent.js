@@ -27,14 +27,14 @@ function FinalScreenComponent(props) {
         <div key={element["key"]}>
           <div
             style={{
-              fontSize: "20px",
+              fontSize: "25px",
               fontWeight: "bold",
               marginTop: "20px",
             }}
           >
             {element["question"]}
           </div>
-          <div style={{ fontSize: "20px" }}>
+          <div style={{ fontSize: "25px" }}>
             {"- " + String(element["answers"]).replaceAll(",", ", ")}
           </div>
         </div>
