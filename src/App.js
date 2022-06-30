@@ -2,6 +2,7 @@ import React from "react";
 import QuestionComponent from "./components/QuestionComponent";
 import AnswerComponent from "./components/AnswerComponent";
 import ProgressBarComponent from "./components/ProgressBarComponent";
+import FinalScreenComponent from "./components/FinalScreenComponent";
 import TestData from "./data/TestData.js";
 import hejdoktorLogo from "./assets/hejdoktor-logo.png";
 
@@ -75,30 +76,6 @@ function App() {
     } else {
       setProgressBarWidth(() => (100 / TestData.length) * questionId + "%");
     }
-  }
-
-  function ShowResultsOnFinalScreen() {
-    console.log(answersForAllQuestions);
-    let output = [];
-
-    answersForAllQuestions.forEach((element) => {
-      element.forEach((childElement) => {
-        output.push(
-          <div
-            style={{ fontSize: "20px", fontWeight: "bold", marginTop: "20px" }}
-          >
-            {childElement["question"]}
-          </div>
-        );
-        output.push(
-          <div style={{ fontSize: "20px" }}>
-            {"- " + childElement["answer"]}
-          </div>
-        );
-      });
-    });
-
-    return <div>{output}</div>;
   }
 
   return (
@@ -176,19 +153,9 @@ function App() {
                 />
               ))}
             {showFinalScreen && (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  alignItems: "center",
-                  height: "100%",
-                  width: "100%",
-                }}
-              >
-                <label style={{ fontSize: "40px" }}>Overview of answers</label>
-                {ShowResultsOnFinalScreen()}
-              </div>
+              <FinalScreenComponent
+                answersForAllQuestions={answersForAllQuestions}
+              />
             )}
           </div>
 
