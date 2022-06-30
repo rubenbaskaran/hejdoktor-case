@@ -62,52 +62,49 @@ const TestData = [
       {
         name: "The Wolf of Wall Street",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/4/4f/Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg",
+          "https://upload.wikimedia.org/wikipedia/en/d/d8/The_Wolf_of_Wall_Street_%282013%29.png",
       },
       {
         name: "The Departed",
-        image:
-          "https://upload.wikimedia.org/wikipedia/en/4/4f/Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/en/5/50/Departed234.jpg",
       },
       {
         name: "Shutter Island",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/4/4f/Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg",
+          "https://upload.wikimedia.org/wikipedia/en/7/76/Shutterislandposter.jpg",
       },
       {
         name: "Goodfellas",
-        image:
-          "https://upload.wikimedia.org/wikipedia/en/4/4f/Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/en/7/7b/Goodfellas.jpg",
       },
       {
         name: "Taxi Driver",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/4/4f/Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg",
+          "https://upload.wikimedia.org/wikipedia/en/3/33/Taxi_Driver_%281976_film_poster%29.jpg",
       },
       {
         name: "The Irishman",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/4/4f/Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg",
+          "https://upload.wikimedia.org/wikipedia/en/8/80/The_Irishman_poster.jpg",
       },
       {
         name: "The Aviator",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/4/4f/Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg",
+          "https://upload.wikimedia.org/wikipedia/en/f/fa/The_Aviator_%282004%29.png",
       },
       {
         name: "Hugo",
-        image:
-          "https://upload.wikimedia.org/wikipedia/en/4/4f/Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/en/7/73/Hugo_Poster.jpg",
       },
       {
         name: "Raging Bull",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/4/4f/Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg",
+          "https://upload.wikimedia.org/wikipedia/en/5/5f/Raging_Bull_poster.jpg",
       },
       {
         name: "Gangs of New York",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/4/4f/Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg",
+          "https://upload.wikimedia.org/wikipedia/en/a/ae/Gangs_of_New_York_Poster.jpg",
       },
     ],
   },
