@@ -5,6 +5,10 @@ function AnswerComponent(props) {
   const [disableAnswer, setDisableAnswer] = React.useState(false);
 
   React.useEffect(() => {
+    SetCheckmarkOverlay();
+  }, []);
+
+  function SetCheckmarkOverlay() {
     if (
       props.allAnswers[props.questionNumber] !== undefined &&
       props.allAnswers[props.questionNumber].length !== 0
@@ -15,7 +19,27 @@ function AnswerComponent(props) {
         }
       });
     }
-  }, []);
+  }
+
+  function SaveOrRemoveAnswer() {
+    if (
+      disableAnswer === false &&
+      props.answersForSingleQuestion.length !== props.numberOfRequiredAnswers
+    ) {
+      props.setAnswersForSingleQuestion((oldArray) => [
+        ...oldArray,
+        { question: props.question, answer: props.name },
+      ]);
+      setDisableAnswer(!disableAnswer);
+    } else if (disableAnswer === true) {
+      props.setAnswersForSingleQuestion(
+        props.answersForSingleQuestion.filter(
+          (item) => item.answer !== props.name
+        )
+      );
+      setDisableAnswer(!disableAnswer);
+    }
+  }
 
   return (
     <div
@@ -34,26 +58,7 @@ function AnswerComponent(props) {
         boxShadow: "3px 3px #C1C1C1",
         cursor: "pointer",
       }}
-      onClick={() => {
-        if (
-          disableAnswer === false &&
-          props.answersForSingleQuestion.length !==
-            props.numberOfRequiredAnswers
-        ) {
-          props.setAnswersForSingleQuestion((oldArray) => [
-            ...oldArray,
-            { question: props.question, answer: props.name },
-          ]);
-          setDisableAnswer(!disableAnswer);
-        } else if (disableAnswer === true) {
-          props.setAnswersForSingleQuestion(
-            props.answersForSingleQuestion.filter(
-              (item) => item.answer !== props.name
-            )
-          );
-          setDisableAnswer(!disableAnswer);
-        }
-      }}
+      onClick={() => SaveOrRemoveAnswer()}
     >
       <div
         style={{
