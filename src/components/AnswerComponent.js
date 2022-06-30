@@ -1,4 +1,5 @@
 import React from "react";
+import checkmark from "../assets/checkmark.png";
 
 function AnswerComponent(props) {
   const [disableAnswer, setDisableAnswer] = React.useState(false);
@@ -68,9 +69,9 @@ function AnswerComponent(props) {
             height: "80%",
             width: "100%",
             objectFit: "contain",
-            opacity: disableAnswer === true ? 0.1 : 1,
+            opacity: disableAnswer === true ? 0.5 : 1,
           }}
-          src={props.image}
+          src={disableAnswer === true ? checkmark : props.image}
         ></img>
         <label
           style={{
@@ -82,6 +83,7 @@ function AnswerComponent(props) {
             fontSize: "20px",
             fontWeight: "bold",
             textAlign: "center",
+            cursor: "pointer",
           }}
         >
           {props.name}
