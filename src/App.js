@@ -83,13 +83,7 @@ function App() {
       <img
         alt="hejdoktor logo"
         style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "flex-end",
           position: "absolute",
-          bottom: 0,
-          right: 0,
-          margin: 0,
         }}
         src={hejdoktorLogo}
       />
@@ -112,6 +106,7 @@ function App() {
             backgroundColor: "white",
             border: "5px solid black",
             borderRadius: "25px",
+            marginTop: "10px",
           }}
         >
           <QuestionComponent
