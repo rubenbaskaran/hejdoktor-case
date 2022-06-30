@@ -1,6 +1,6 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TestData from "../data/TestData.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleArrowLeft,
   faCircleArrowRight,
@@ -23,7 +23,7 @@ function QuestionComponent(props) {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "20%",
+            width: "10%",
             height: "100%",
             justifyContent: "center",
             alignItems: "center",
@@ -44,7 +44,7 @@ function QuestionComponent(props) {
         <label
           style={{
             display: "flex",
-            width: "100%",
+            width: "80%",
             height: "100%",
             justifyContent: "center",
             alignItems: "center",
@@ -64,7 +64,7 @@ function QuestionComponent(props) {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "20%",
+            width: "10%",
             height: "100%",
             justifyContent: "center",
             alignItems: "center",
